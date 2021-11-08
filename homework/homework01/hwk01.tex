@@ -1,0 +1,32 @@
+%!TeX document-id = {326d2e8f-0c72-44fb-937b-8c8f6b722c8e}
+\documentclass[a4paper]{article}
+
+\input{../../common/preamble.tex}
+
+\geometry{
+    left=1.5cm,
+    right=1.5cm,
+    top=1.5cm,
+    bottom=1.5cm
+}
+
+% Setup fancy header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1.5pt}
+\lhead{
+    {\small {\it Coure Title}}\\
+    {\small Homework 01 - last updated: \today}
+}
+\rhead{
+    {\small Student Name}\\
+    {\small Student Identifier}
+}
+\cfoot{\thepage}
+
+
+\begin{document}
+\subfile{problems/problem01.tex}
+\end{document}
