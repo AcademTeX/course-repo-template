@@ -13,18 +13,11 @@
 \usepackage{dsfont, mathrsfs}
 \usepackage[T1]{fontenc}
 
-%Change numbering for equations and figures
-\usepackage{xassoccnt}
-
-% Number within Section
-\numberwithin{equation}{section}
-\DeclareCoupledCounters[name=figeq]{figure, equation}
-\CounterWithin{equation}{section}
 
 %Format chapter, section, and subsection headings better
 \usepackage{titlesec}
 \titleformat{\section}{\normalfont\bfseries\scshape}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\fontsize{12}{15}\scshape}{\thesubsection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\itshape}{\thesubsection}{1em}{}
 \titleformat{\chapter}[display]
  {\bfseries\Large\lsstyle\vspace{5cm}\filleft}
  {\MakeUppercase{\chaptername}\enspace\thechapter}
@@ -44,10 +37,10 @@
 \hypersetup{
     linktoc=all,
     colorlinks=true,
-    linkcolor=green!35!black, 
-    anchorcolor=green!35!black, 
-    citecolor=magenta!45!black,
-    urlcolor=cyan!65!black}
+    linkcolor=blue!35!black, 
+    anchorcolor=blue!35!black, 
+    citecolor=blue!45!black,
+    urlcolor=blue!65!black}
 \usepackage[nameinlink]{cleveref}
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\Cref*{#1} \nameref*{#1}}}
 \usepackage[style=numeric]{biblatex}
@@ -120,26 +113,18 @@
 \renewtheorem*{algorithm*}{Algorithm}
 \renewtheorem*{property*}{Property}
 
-
-% Homework problem counters 
-\theoremstyle{break}
-\newtheorem*{exercise}{Exercise}
-\newtheorem*{problem}{Problem}
-
-
 %AMS Remark/Notation Style Environments
 \theoremheaderfont{\kern-0.2cm\smallskip\normalfont\scshape}
 \newtheorem{remark}[equation]{Remark}
 \newtheorem{note}[equation]{Note}
 \newtheorem{notation}[equation]{Notation}
 
-
 %Bolder proof & solutions environment
 \makeatletter
 \renewenvironment{proof}[1][\proofname]
 {\par
 \normalfont\topsep6\p@\@plus6\p@\relax\trivlist
-\item[\hskip\labelsep\bfseries\itshape#1\@addpunct{.}]
+\item[\hskip\labelsep\scshape#1\@addpunct{.}]
 \mbox{}
 \par
 \nobreak}
@@ -151,6 +136,12 @@
 \makeatother
 \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
 \newenvironment{outline}{\begin{proof}[Outline of the Proof]\begin{numlist}}{\end{numlist}\end{proof}}
+
+% Number figures with equations 
+\makeatletter
+\let\c@equation\c@figure
+\makeatother
+\numberwithin{equation}{section}
 
 %Swap phi -> varphi and epsilon -> varepsilon
 \newcommand{\oldepsilon}{\epsilon}
@@ -172,28 +163,6 @@
 \newcommand{\Sn}{\mathds{S}^{n-1}}
 \newcommand{\Sphere}[1]{\mathds{S}^{#1}}
 
-
-% Standard commands for Mathbb letters
-\newcommand{\Abb}{\mathbb{A}}
-\newcommand{\Bbb}{\mathbb{B}}
-\newcommand{\Dbb}{\mathbb{D}}
-\newcommand{\Ebb}{\mathbb{E}}
-\newcommand{\Fbb}{\mathbb{F}}
-\newcommand{\Gbb}{\mathbb{G}}
-\newcommand{\Hbb}{\mathbb{H}}
-\newcommand{\Kbb}{\mathbb{K}}
-\newcommand{\Lbb}{\mathbb{L}}
-\newcommand{\Mbb}{\mathbb{M}}
-\newcommand{\Nbb}{\mathbb{N}}
-\newcommand{\Rbb}{\mathbb{R}}
-\newcommand{\Sbb}{\mathbb{S}}
-\newcommand{\Tbb}{\mathbb{T}}
-\newcommand{\Ubb}{\mathbb{U}}
-\newcommand{\Vbb}{\mathbb{V}}
-\newcommand{\Wbb}{\mathbb{W}}
-\newcommand{\Xbb}{\mathbb{X}}
-\newcommand{\Ybb}{\mathbb{Y}}
-\newcommand{\Zbb}{\mathbb{Z}}
 
 % Standard commands for Mathds letters
 \newcommand{\Ads}{\mathds{A}}
@@ -239,11 +208,97 @@
 \newcommand{\Ycal}{\mathcal{Y}}
 \newcommand{\Zcal}{\mathcal{Z}}
 
-% Standard commands for Mathscr letters 
+
+% Standard commands for Mathbf letters
+\newcommand{\Abf}{\mathbf{A}}
+\newcommand{\Bbf}{\mathbf{B}}
+\newcommand{\Dbf}{\mathbf{D}}
+\newcommand{\Ebf}{\mathbf{E}}
+\newcommand{\Fbf}{\mathbf{F}}
+\newcommand{\Gbf}{\mathbf{G}}
+\newcommand{\Hbf}{\mathbf{H}}
+\newcommand{\Kbf}{\mathbf{K}}
+\newcommand{\Lbf}{\mathbf{L}}
+\newcommand{\Mbf}{\mathbf{M}}
+\newcommand{\Nbf}{\mathbf{N}}
+\newcommand{\Rbf}{\mathbf{R}}
+\newcommand{\Sbf}{\mathbf{S}}
+\newcommand{\Tbf}{\mathbf{T}}
+\newcommand{\Ubf}{\mathbf{U}}
+\newcommand{\Vbf}{\mathbf{V}}
+\newcommand{\Wbf}{\mathbf{W}}
+\newcommand{\Xbf}{\mathbf{X}}
+\newcommand{\Ybf}{\mathbf{Y}}
+\newcommand{\Zbf}{\mathbf{Z}}
+
+
+% Standard commands for Mathrm letters
+\newcommand{\Arm}{\mathrm{A}}
+\newcommand{\Brm}{\mathrm{B}}
+\newcommand{\Drm}{\mathrm{D}}
+\newcommand{\Erm}{\mathrm{E}}
+\newcommand{\Frm}{\mathrm{F}}
+\newcommand{\Grm}{\mathrm{G}}
+\newcommand{\Hrm}{\mathrm{H}}
+\newcommand{\Krm}{\mathrm{K}}
+\newcommand{\Lrm}{\mathrm{L}}
+\newcommand{\Mrm}{\mathrm{M}}
+\newcommand{\Nrm}{\mathrm{N}}
+\newcommand{\Rrm}{\mathrm{R}}
+\newcommand{\Srm}{\mathrm{S}}
+\newcommand{\Trm}{\mathrm{T}}
+\newcommand{\Urm}{\mathrm{U}}
+\newcommand{\Vrm}{\mathrm{V}}
+\newcommand{\Wrm}{\mathrm{W}}
+\newcommand{\Xrm}{\mathrm{X}}
+\newcommand{\Yrm}{\mathrm{Y}}
+\newcommand{\Zrm}{\mathrm{Z}}
+
+
+% Standard commands for Mathsf letters
+\newcommand{\Asf}{\mathsf{A}}
+\newcommand{\Bsf}{\mathsf{B}}
+\newcommand{\Dsf}{\mathsf{D}}
+\newcommand{\Esf}{\mathsf{E}}
+\newcommand{\Fsf}{\mathsf{F}}
+\newcommand{\Gsf}{\mathsf{G}}
+\newcommand{\Hsf}{\mathsf{H}}
+\newcommand{\Ksf}{\mathsf{K}}
+\newcommand{\Lsf}{\mathsf{L}}
+\newcommand{\Msf}{\mathsf{M}}
+\newcommand{\Nsf}{\mathsf{N}}
+\newcommand{\Rsf}{\mathsf{R}}
+\newcommand{\Ssf}{\mathsf{S}}
+\newcommand{\Tsf}{\mathsf{T}}
+\newcommand{\Usf}{\mathsf{U}}
+\newcommand{\Vsf}{\mathsf{V}}
+\newcommand{\Wsf}{\mathsf{W}}
+\newcommand{\Xsf}{\mathsf{X}}
+\newcommand{\Ysf}{\mathsf{Y}}
+\newcommand{\Zsf}{\mathsf{Z}}
+
+
+% Standard commands for Mathscr letters
 \newcommand{\Ascr}{\mathscr{A}}
 \newcommand{\Bscr}{\mathscr{B}}
-\newcommand{\Cscr}{\mathscr{C}}
 \newcommand{\Dscr}{\mathscr{D}}
+\newcommand{\Escr}{\mathscr{E}}
+\newcommand{\Fscr}{\mathscr{F}}
+\newcommand{\Gscr}{\mathscr{G}}
+\newcommand{\Hscr}{\mathscr{H}}
+\newcommand{\Kscr}{\mathscr{K}}
+\newcommand{\Lscr}{\mathscr{L}}
+\newcommand{\Mscr}{\mathscr{M}}
+\newcommand{\Nscr}{\mathscr{N}}
+\newcommand{\Rscr}{\mathscr{R}}
+\newcommand{\Sscr}{\mathscr{S}}
+\newcommand{\Tscr}{\mathscr{T}}
+\newcommand{\Uscr}{\mathscr{U}}
+\newcommand{\Vscr}{\mathscr{V}}
+\newcommand{\Wscr}{\mathscr{W}}
+\newcommand{\Xscr}{\mathscr{X}}
+\newcommand{\Yscr}{\mathscr{Y}}
+\newcommand{\Zscr}{\mathscr{Z}}
 
 % Probability Theory Macros
 \newcommand{\prob}{\Pr}
@@ -253,11 +308,8 @@
 \newcommand{\Ind}[1]{\mathds{1}_{#1}}
 \newcommand{\IndCond}[1]{\mathds{1}_{\left\{#1\right\}}}
 \DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\var}{Var}
-\DeclareMathOperator{\corr}{Corr}
 \DeclareMathOperator{\Corr}{Corr}
 \DeclareMathOperator{\Cov}{Cov}
-\DeclareMathOperator{\cov}{Cov}
 
 % Specific Distributions
 \DeclareMathOperator{\Gauss}{Gauss}
@@ -267,35 +319,23 @@
 
 % Geometry Macros
 \DeclareMathOperator{\Aff}{Aff}
-\DeclareMathOperator{\aff}{Aff}
-\DeclareMathOperator{\lin}{Lin}
 \DeclareMathOperator{\Lin}{Lin}
 \DeclareMathOperator{\Span}{Span}
-\DeclareMathOperator{\span}{Span}
 \DeclareMathOperator{\Rank}{Rank}
-\DeclareMathOperator{\rank}{Rank}
-\DeclareMathOperator{\nullity}{Null}
-\DeclareMathOperator{\Nullity}{Null}
+\DeclareMathOperator{\Null}{Null}
 \DeclareMathOperator{\Range}{Range}
-\DeclareMathOperator{\range}{Range}
 \DeclareMathOperator{\Area}{Area}
-\DeclareMathOperator{\area}{Area}
 \DeclareMathOperator{\Conv}{Conv}
-\DeclareMathOperator{\conv}{Conv}
 \DeclareMathOperator{\Diam}{Diam}
-\DeclareMathOperator{\diam}{Diam}
 \DeclareMathOperator{\Vol}{Vol}
-\DeclareMathOperator{\vol}{Vol}
 \DeclareMathOperator{\Proj}{Proj}
-\DeclareMathOperator{\proj}{Proj}
-\DeclareMathOperator{\perim}{Perim}
 \DeclareMathOperator{\Perim}{Perim}
 \DeclareMathOperator{\Frob}{Frob}
 \DeclareMathOperator{\HS}{HS}
 \newcommand{\polar}{^{\circ}}
-\DeclareMathOperator{\relintr}{rel. int.}
-\DeclareMathOperator{\relbd}{rel. bd.}
-\DeclareMathOperator{\relcl}{rel. cl.}
+\DeclareMathOperator{\relintr}{rel.\,int.}
+\DeclareMathOperator{\relbd}{rel.\,bd.}
+\DeclareMathOperator{\relcl}{rel.\,cl.}
 \DeclareMathOperator{\bd}{bd.}
 \DeclareMathOperator{\intr}{int.}
 \DeclareMathOperator{\cl}{cl.}
@@ -305,10 +345,6 @@
 \DeclareMathOperator{\essinf}{ess\,inf}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\esssupp}{ess\,supp}
-\newcommand{\io}{\text{ i.o.}}
-\newcommand{\ult}{\text{ ult.}}
-\newcommand{\ae}{\text{ a.e.}}
-\newcommand{\as}{\text{ a.s.}}
 
 % Linear and Functional Analysis Macros
 \DeclareMathOperator{\Id}{Id}
@@ -414,6 +450,7 @@
 \newcommand{\toDist}{\xrightarrow{\text{in dist.}}}
 \newcommand{\upto}{\nearrow}
 \newcommand{\downto}{\searrow}
+\renewcommand{\to}{\xrightarrow{~}}
 
 %Math operators otherwise not defined
 \DeclareMathOperator{\argmax}{arg\,max}
@@ -436,9 +473,9 @@
 \newcommand{\SPC}{\mathop{}\!}
 
 %Replace non-wide with wide when available
-\newcommand{\narrowbar}{\bar}
-\newcommand{\narrowhat}{\hat}
-\newcommand{\narrowtilde}{\tilde}
+\newcommand{\NarrowBar}{\bar}
+\newcommand{\NarrowHat}{\hat}
+\newcommand{\NarrowTilde}{\tilde}
 \renewcommand{\bar}{\overline}
 \renewcommand{\hat}{\widehat}
 \renewcommand{\tilde}{\widetilde}
@@ -458,10 +495,14 @@
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\bra}[1]{\left\langle #1 \right\rvert}
 \newcommand{\ket}[1]{\left\lvert #1 \right\rangle}
+\newcommand{\braketO}[1]{\left\langle #1 \middle\mid #1\right\right}
+\newcommand{\ketbraO}[1]{\left\lvert #1\right\rangle\left\langle #1\right\rvert}
 \newcommand{\braket}[2]{\left\langle #1 \middle\mid #2\right\rangle}
 \newcommand{\ketbra}[2]{\left\lvert #1\middle\rangle\middle\langle #2\right\rvert}
 \newcommand{\braketA}[3]{\left\langle #1 \middle\mid #2 \middle\mid #3\right\rangle}
-\newcommand{\innerp}[1]{\left\langle #1 \rangle}
+\newcommand{\InnerO}[1]{\left\langle #1, #1 \right\rangle}
+\newcommand{\InnerP}[2]{\left\langle #1, #2\right\rangle}
+\newcommand{\Avg}{\left\langle #1 \right\rangle}
 \newcommand{\Generates}[2]{\left\langle #1 \;\middle\mid\; #2 \right\rangle}
 \newcommand{\BigO}[1]{\mathcal{O}\left(#1\right)}
 \newcommand{\LittleO}[1]{\mathcal{o}\left(#1\right)}
