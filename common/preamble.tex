@@ -89,6 +89,7 @@
 \theoremindent=0.3cm
 \theoremheaderfont{\kern-0.3cm\smallskip\normalfont\bfseries}
 
+\numberwithin{equation}{section}
 \newtheorem{theorem}[equation]{Theorem}
 \newtheorem{lemma}[equation]{Lemma}
 \newtheorem{corollary}[equation]{Corollary}
@@ -138,10 +139,9 @@
 \newenvironment{outline}{\begin{proof}[Outline of the Proof]\begin{numlist}}{\end{numlist}\end{proof}}
 
 % Number figures with equations 
-\makeatletter
-\let\c@equation\c@figure
-\makeatother
-\numberwithin{equation}{section}
+% \makeatletter
+% \let\c@equation\c@figure
+% \makeatother
 
 %Swap phi -> varphi and epsilon -> varepsilon
 \newcommand{\oldepsilon}{\epsilon}
