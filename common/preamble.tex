@@ -13,7 +13,6 @@
 \usepackage{dsfont, mathrsfs}
 \usepackage[T1]{fontenc}
 
-
 %Format chapter, section, and subsection headings better
 \usepackage{titlesec}
 \titleformat{\section}{\normalfont\bfseries\scshape}{\thesection}{1em}{}
@@ -26,11 +25,11 @@
 \titlespacing*{\chapter}{0pt}{-60pt}{10ex}
 
 %Better / easier to remember list environments
-\newenvironment{romlist}{\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label={(\roman*)}]}{\end{enumerate}}
-\newenvironment{numlist}{\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label={(\arabic*)}]}{\end{enumerate}}
-\newenvironment{abclist}{\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label={(\alph*)}]}{\end{enumerate}}
-\newenvironment{properties}{\begin{numlist}}{\end{numlist}}
-\newenvironment{parts}{\begin{abclist}}{\end{abclist}}
+\newenvironment{romlist}{\begin{enumerate}[label={(\roman*)}]}{\end{enumerate}}
+\newenvironment{numlist}{\begin{enumerate}[label={(\arabic*)}]}{\end{enumerate}}
+\newenvironment{abclist}{\begin{enumerate}[label={(\alph*)}]}{\end{enumerate}}
+\newenvironment{ROMlist}{\begin{enumerate}[label={(\Roman*)}]}{\end{enumerate}}
+\newenvironment{ABClist}{\begin{enumerate}[label={(\Alph*)}]}{\end{enumerate}}
 
 %Bibliography setup (with BibLaTeX + Biber)
 \usepackage{hyperref}
@@ -61,11 +60,8 @@
 
 %Endnotes
 \usepackage{enotez}
-\setenotez{
-    list-heading={\section{#1}}
-}
+\setenotez{list-heading={\section{#1}}}
 \let\footnote=\endnote
-
 
 %Break-plain theorem environments
 \usepackage[amsmath, thmmarks, hyperref, amsthm]{ntheorem}
@@ -138,10 +134,6 @@
 \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
 \newenvironment{outline}{\begin{proof}[Outline of the Proof]\begin{numlist}}{\end{numlist}\end{proof}}
 
-% Number figures with equations 
-% \makeatletter
-% \let\c@equation\c@figure
-% \makeatother
 
 %Swap phi -> varphi and epsilon -> varepsilon
 \newcommand{\oldepsilon}{\epsilon}
@@ -163,19 +155,24 @@
 \newcommand{\Sn}{\mathds{S}^{n-1}}
 \newcommand{\Sphere}[1]{\mathds{S}^{#1}}
 
-
 % Standard commands for Mathds letters
 \newcommand{\Ads}{\mathds{A}}
 \newcommand{\Bds}{\mathds{B}}
+\newcommand{\Cds}{\mathds{C}}
 \newcommand{\Dds}{\mathds{D}}
 \newcommand{\Eds}{\mathds{E}}
 \newcommand{\Fds}{\mathds{F}}
 \newcommand{\Gds}{\mathds{G}}
 \newcommand{\Hds}{\mathds{H}}
+\newcommand{\Ids}{\mathds{I}}
+\newcommand{\Jds}{\mathds{J}}
 \newcommand{\Kds}{\mathds{K}}
 \newcommand{\Lds}{\mathds{L}}
 \newcommand{\Mds}{\mathds{M}}
 \newcommand{\Nds}{\mathds{N}}
+\newcommand{\Ods}{\mathds{O}}
+\newcommand{\Pds}{\mathds{P}}
+\newcommand{\Qds}{\mathds{Q}}
 \newcommand{\Rds}{\mathds{R}}
 \newcommand{\Sds}{\mathds{S}}
 \newcommand{\Tds}{\mathds{T}}
@@ -189,15 +186,21 @@
 % Standard commands for Mathcal letters
 \newcommand{\Acal}{\mathcal{A}}
 \newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
 \newcommand{\Dcal}{\mathcal{D}}
 \newcommand{\Ecal}{\mathcal{E}}
 \newcommand{\Fcal}{\mathcal{F}}
 \newcommand{\Gcal}{\mathcal{G}}
 \newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
 \newcommand{\Kcal}{\mathcal{K}}
 \newcommand{\Lcal}{\mathcal{L}}
 \newcommand{\Mcal}{\mathcal{M}}
 \newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Qcal}{\mathcal{Q}}
 \newcommand{\Rcal}{\mathcal{R}}
 \newcommand{\Scal}{\mathcal{S}}
 \newcommand{\Tcal}{\mathcal{T}}
@@ -208,19 +211,24 @@
 \newcommand{\Ycal}{\mathcal{Y}}
 \newcommand{\Zcal}{\mathcal{Z}}
 
-
 % Standard commands for Mathbf letters
 \newcommand{\Abf}{\mathbf{A}}
 \newcommand{\Bbf}{\mathbf{B}}
+\newcommand{\Cbf}{\mathbf{C}}
 \newcommand{\Dbf}{\mathbf{D}}
 \newcommand{\Ebf}{\mathbf{E}}
 \newcommand{\Fbf}{\mathbf{F}}
 \newcommand{\Gbf}{\mathbf{G}}
 \newcommand{\Hbf}{\mathbf{H}}
+\newcommand{\Ibf}{\mathbf{I}}
+\newcommand{\Jbf}{\mathbf{J}}
 \newcommand{\Kbf}{\mathbf{K}}
 \newcommand{\Lbf}{\mathbf{L}}
 \newcommand{\Mbf}{\mathbf{M}}
 \newcommand{\Nbf}{\mathbf{N}}
+\newcommand{\Obf}{\mathbf{O}}
+\newcommand{\Pbf}{\mathbf{P}}
+\newcommand{\Qbf}{\mathbf{Q}}
 \newcommand{\Rbf}{\mathbf{R}}
 \newcommand{\Sbf}{\mathbf{S}}
 \newcommand{\Tbf}{\mathbf{T}}
@@ -231,19 +239,24 @@
 \newcommand{\Ybf}{\mathbf{Y}}
 \newcommand{\Zbf}{\mathbf{Z}}
 
-
 % Standard commands for Mathrm letters
 \newcommand{\Arm}{\mathrm{A}}
 \newcommand{\Brm}{\mathrm{B}}
+\newcommand{\Crm}{\mathrm{C}}
 \newcommand{\Drm}{\mathrm{D}}
 \newcommand{\Erm}{\mathrm{E}}
 \newcommand{\Frm}{\mathrm{F}}
 \newcommand{\Grm}{\mathrm{G}}
 \newcommand{\Hrm}{\mathrm{H}}
+\newcommand{\Irm}{\mathrm{I}}
+\newcommand{\Jrm}{\mathrm{J}}
 \newcommand{\Krm}{\mathrm{K}}
 \newcommand{\Lrm}{\mathrm{L}}
 \newcommand{\Mrm}{\mathrm{M}}
 \newcommand{\Nrm}{\mathrm{N}}
+\newcommand{\Orm}{\mathrm{O}}
+\newcommand{\Prm}{\mathrm{P}}
+\newcommand{\Qrm}{\mathrm{Q}}
 \newcommand{\Rrm}{\mathrm{R}}
 \newcommand{\Srm}{\mathrm{S}}
 \newcommand{\Trm}{\mathrm{T}}
@@ -254,19 +267,24 @@
 \newcommand{\Yrm}{\mathrm{Y}}
 \newcommand{\Zrm}{\mathrm{Z}}
 
-
 % Standard commands for Mathsf letters
 \newcommand{\Asf}{\mathsf{A}}
 \newcommand{\Bsf}{\mathsf{B}}
+\newcommand{\Csf}{\mathsf{C}}
 \newcommand{\Dsf}{\mathsf{D}}
 \newcommand{\Esf}{\mathsf{E}}
 \newcommand{\Fsf}{\mathsf{F}}
 \newcommand{\Gsf}{\mathsf{G}}
 \newcommand{\Hsf}{\mathsf{H}}
+\newcommand{\Isf}{\mathsf{I}}
+\newcommand{\Jsf}{\mathsf{J}}
 \newcommand{\Ksf}{\mathsf{K}}
 \newcommand{\Lsf}{\mathsf{L}}
 \newcommand{\Msf}{\mathsf{M}}
 \newcommand{\Nsf}{\mathsf{N}}
+\newcommand{\Osf}{\mathsf{O}}
+\newcommand{\Psf}{\mathsf{P}}
+\newcommand{\Qsf}{\mathsf{Q}}
 \newcommand{\Rsf}{\mathsf{R}}
 \newcommand{\Ssf}{\mathsf{S}}
 \newcommand{\Tsf}{\mathsf{T}}
@@ -277,19 +295,24 @@
 \newcommand{\Ysf}{\mathsf{Y}}
 \newcommand{\Zsf}{\mathsf{Z}}
 
-
 % Standard commands for Mathscr letters
 \newcommand{\Ascr}{\mathscr{A}}
 \newcommand{\Bscr}{\mathscr{B}}
+\newcommand{\Cscr}{\mathscr{C}}
 \newcommand{\Dscr}{\mathscr{D}}
 \newcommand{\Escr}{\mathscr{E}}
 \newcommand{\Fscr}{\mathscr{F}}
 \newcommand{\Gscr}{\mathscr{G}}
 \newcommand{\Hscr}{\mathscr{H}}
+\newcommand{\Iscr}{\mathscr{I}}
+\newcommand{\Jscr}{\mathscr{J}}
 \newcommand{\Kscr}{\mathscr{K}}
 \newcommand{\Lscr}{\mathscr{L}}
 \newcommand{\Mscr}{\mathscr{M}}
 \newcommand{\Nscr}{\mathscr{N}}
+\newcommand{\Oscr}{\mathscr{O}}
+\newcommand{\Pscr}{\mathscr{P}}
+\newcommand{\Qscr}{\mathscr{Q}}
 \newcommand{\Rscr}{\mathscr{R}}
 \newcommand{\Sscr}{\mathscr{S}}
 \newcommand{\Tscr}{\mathscr{T}}
@@ -354,10 +377,11 @@
 \DeclareMathOperator{\eigfuncs}{Eig.\,Funcs.}
 \newcommand{\sa}{^{\mathsf{sa}}}
 \newcommand{\transpose}{^{\intercal}}
-\newcommand{\htranspose}{^{\mathsf{H}}}
+\newcommand{\conjugate}{^{\mathsf{*}}}
 \newcommand{\adjoint}{^{\mathsf{*}}}
 \newcommand{\dual}{^{\mathsf{*}}}
-\newcommand{\sstar}{^{\mathsf{*}}}
+\newcommand{\oldstar}{\star}
+\renewcommand{\star}{^{\mathsf{*}}}
 \newcommand{\inverse}{^{-1}}
 \newcommand{\psinverse}{^{\dagger}}
 
@@ -404,6 +428,9 @@
 \newcommand{\divisionsymbol}{\div}
 \renewcommand*{\div}{\nabla\cdot}
 \newcommand*{\curl}{\nabla\times}
+\DeclareMathOperator{\Grad}{grad}
+\DeclareMathOperator{\Div}{div}
+\DelcareMathOperator{\Curl}{curl}
 \newcommand*{\laplacian}{\nabla^2}
 \newcommand*{\DirD}{\mathbf{D}}
 \newcommand*{\hessian}{\mathbf{H}}
@@ -435,14 +462,16 @@
 
 % Set Theory Macros
 \newcommand{\comp}{^{\mathsf{c}}}
-\newcommand{\Set}[2]{\left\{#1\;\middle\mid\;#2\right\}}
+\newcommand{\compl}{^{\mathsf{c}}}
+\newcommand{\compliment}{^{\mathsf{c}}}
+\newcommand{\Set1}[1]{\left\{ #1 \right\}}
+\newcommand{\Set2}[2]{\left\{#1\;\middle\mid\;#2\right\}}
 \DeclareMathOperator{\card}{Card}
 \DeclareMathOperator{\Card}{Card}
 \newcommand{\pset}[1]{2^{#1}}
 
 % Macros for Limit Shorthands
 \newcommand{\toUnif}{\xrightarrow{\text{unif}}}
-\newcommand{\toAs}{\xrightarrow{\text{a.s.}}}
 \newcommand{\toAe}{\xrightarrow{\text{a.e.}}}
 \newcommand{\toMeas}{\xrightarrow{\text{in meas.}}}
 \newcommand{\toWeak}{\xrightarrow{\text{weak}}}
@@ -450,7 +479,9 @@
 \newcommand{\toDist}{\xrightarrow{\text{in dist.}}}
 \newcommand{\upto}{\nearrow}
 \newcommand{\downto}{\searrow}
-\renewcommand{\to}{\xrightarrow{~}}
+\newcommand{\to}{\xrightarrow{~}}
+\newcommand{\toAs}{\xrightarrow}
+\newcommand{\toIn}{\xrightarrow}
 
 %Math operators otherwise not defined
 \DeclareMathOperator{\argmax}{arg\,max}
@@ -458,7 +489,9 @@
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\real}{Re}
 \DeclareMathOperator{\imag}{Im}
-\DeclareMathOperator{\sign}{sign}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\DeclareMathOperator{\sign}{Sign}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Tr}{tr}
@@ -483,10 +516,6 @@
 % Fix minor font issues
 \let\oldvec=\vec
 \renewcommand{\vec}[1]{\oldvec{\mathbf{#1}}}
-\newcommand{\ambigsubset}{\subset}
-\newcommand{\ambigsupset}{\supset}
-\renewcommand{\subset}{\subsetneq}
-\renewcommand{\supset}{\supsetneq}
 
 % Some standard environments
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
@@ -494,20 +523,27 @@
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\bra}[1]{\left\langle #1 \right\rvert}
+\newcommand{\Cra}[1]{\left\langle #1 \right\rveCt}
 \newcommand{\ket}[1]{\left\lvert #1 \right\rangle}
 \newcommand{\braketO}[1]{\left\langle #1 \middle\mid #1\right\right}
+\newcommand{\CraketO}[1]{\left\langle #1 \middle\mid #1\right\rigCt}
 \newcommand{\ketbraO}[1]{\left\lvert #1\right\rangle\left\langle #1\right\rvert}
 \newcommand{\braket}[2]{\left\langle #1 \middle\mid #2\right\rangle}
+\newcommand{\Craket}[2]{\left\langle #1 \middle\mid #2\right\rangCe}
 \newcommand{\ketbra}[2]{\left\lvert #1\middle\rangle\middle\langle #2\right\rvert}
 \newcommand{\braketA}[3]{\left\langle #1 \middle\mid #2 \middle\mid #3\right\rangle}
+\newcommand{\CraketA}[3]{\left\langle #1 \middle\mid #2 \middle\mid #3\right\rangCe}
 \newcommand{\InnerO}[1]{\left\langle #1, #1 \right\rangle}
 \newcommand{\InnerP}[2]{\left\langle #1, #2\right\rangle}
 \newcommand{\Avg}{\left\langle #1 \right\rangle}
 \newcommand{\Generates}[2]{\left\langle #1 \;\middle\mid\; #2 \right\rangle}
 \newcommand{\BigO}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\CigO}[1]{\mathcal{O}\left(#1\righC)}
 \newcommand{\LittleO}[1]{\mathcal{o}\left(#1\right)}
 \newcommand{\BigTheta}[1]{\Theta\left(#1\right)}
+\newcommand{\CigTheta}[1]{\Theta\left(#1\righC)}
 \newcommand{\BigOmega}[1]{\Omega\left(#1\right)}
+\newcommand{\CigOmega}[1]{\Omega\left(#1\righC)}
 
 % Quantum Mechanics Specific Characters
 \newcommand{\upbra}{\bra{\uparrow}}
