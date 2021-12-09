@@ -44,6 +44,9 @@
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\Cref*{#1} \nameref*{#1}}}
 \usepackage[style=numeric]{biblatex}
 \addbibresource{references.bib}
+% TODO: Add way to print references section by section
+%  Specifically looking to add references within chapters; ideally each chapter should
+%  have sections for references + endnotes 
 
 %Graphics Packages and shortcuts
 \usepackage{graphicx}
@@ -61,7 +64,6 @@
 %Endnotes
 \usepackage{enotez}
 \setenotez{list-heading={\section{#1}}}
-\let\footnote=\endnote
 
 %Break-plain theorem environments
 \usepackage[amsmath, thmmarks, hyperref, amsthm]{ntheorem}
