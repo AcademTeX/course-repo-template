@@ -20,4 +20,4 @@ jobs:
         with: 
           name: notes
           path: notes/*.pdf
-        if-no-files-found: error
+          if-no-files-found: error
