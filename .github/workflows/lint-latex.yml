@@ -1,9 +1,9 @@
 name: Lint all LaTeX files
 on:
   push:
-    branches: [ main ]
+    branches: [ main, gh-pages ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, gh-pages ]
 jobs:
   build:
     runs-on: ubuntu-latest
