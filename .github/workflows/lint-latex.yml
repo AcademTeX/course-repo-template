@@ -1,4 +1,4 @@
-name: LaTeX lint with chtex
+name: Lint all LaTeX files
 on:
   push:
     branches: [ main ]
@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: LaTeX linter (chktex)
-        uses: j2kun/chktex-action@1.0.3
+        uses: j2kun/chktex-action@main
