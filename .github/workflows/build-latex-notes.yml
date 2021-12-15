@@ -16,9 +16,20 @@ jobs:
           glob_root_file: true
           working_directory: notes
           extra_system_packages: "py-pygments"
+          post_compile: |
+            cp **/*.pdf ../gh-pages
+            git add -f ../gh-pages/*.pdf
+            git commit -m "chore(gh-pages): Upload latest notes"
+            git push
       - name: Upload notes to action artifacts
         uses: actions/upload-artifact@master
         with: 
           name: notes
           path: notes/*.pdf
           if-no-files-found: error
+      - name: Deploy notes to github pages
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with: 
+          branch: gh-pages
+          folder: gh-pages
