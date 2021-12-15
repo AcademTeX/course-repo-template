@@ -11,12 +11,11 @@ jobs:
       - name: Compile notes (including Biber)
         uses: xu-cheng/latex-action@v2
         with:
-          args: -pdf -interaction=nonstopmode
-          root_file: "*.tex"
+          args: -f -pdf -interaction=nonstopmode
+          root_file: "homework*/*.tex"
           glob_root_file: true
-          working_directory: notes
+          working_directory: homework
           extra_system_packages: "py-pygments"
-          pre_compile: latexmk -pdf -interaction=nonstopmode *.tex
       - name: Upload notes to action artifacts
         uses: actions/upload-artifact@master
         with: 
