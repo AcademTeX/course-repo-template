@@ -500,7 +500,11 @@ Silent
     \rVert
     \rangle
     \mid
+    \mainmatter
+    \frontmatter
+    \printbibliography
     
+    \appendix
     \@warning 
     \abstractpage
     \addlinespace 
