@@ -1,10 +1,9 @@
 #!/bin/bash
 
-filepath=$(fzf -q ^hwk -q .tex$)
-curdir=$(pwd)
-texdir=$(dirname $filepath)
-texfile=$(basename $filepath)
-
-cd $texdir
-pdflatex -interaction=nonstopmode $texfile
-cd $curdir
+for assignment in homework* ; do 
+    cd assignment
+    for file in *.tex ; do 
+        latexmk -f -pdf -interaction=nonstopmode $file
+    done 
+    cd .. 
+done

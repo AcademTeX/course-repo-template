@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pdflatex -interaction=nonstopmode notes.tex
-biber notes
-pdflatex -interaction=nonstopmode notes.tex
+for file in *.tex ; do 
+    latexmk -f -pdf -interaction=nonstopmode $file
+done
