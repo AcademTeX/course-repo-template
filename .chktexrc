@@ -493,6 +493,14 @@ WordDash
 
 Silent
 {
+    \lvert
+    \lVert
+    \langle
+    \rvert
+    \rVert
+    \rangle
+    \mid
+    
     \@warning 
     \abstractpage
     \addlinespace 
