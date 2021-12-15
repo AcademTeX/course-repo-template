@@ -41,7 +41,7 @@
     citecolor=blue!45!black,
     urlcolor=blue!65!black}
 \usepackage[nameinlink]{cleveref}
-\newcommand*{\fullref}[1]{\hyperref[{#1}]{\Cref*{#1} \nameref*{#1}}}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\Cref*{#1}~\nameref*{#1}}}
 \usepackage[style=numeric]{biblatex}
 \addbibresource{references.bib}
 % TODO Add way to print references section by section
@@ -525,8 +525,7 @@
 \newcommand{\bra}[1]{\left\langle #1 \right\rvert}
 \newcommand{\Cra}[1]{\left\langle #1 \right\rveCt}
 \newcommand{\ket}[1]{\left\lvert #1 \right\rangle}
-\newcommand{\braketO}[1]{\left\langle #1 \middle\mid #1\right\right}
-\newcommand{\CraketO}[1]{\left\langle #1 \middle\mid #1\right\rigCt}
+\newcommand{\braketO}[1]{\left\langle #1 \middle\mid #1\right\rangle}
 \newcommand{\ketbraO}[1]{\left\lvert #1\right\rangle\left\langle #1\right\rvert}
 \newcommand{\braket}[2]{\left\langle #1 \middle\mid #2\right\rangle}
 \newcommand{\Craket}[2]{\left\langle #1 \middle\mid #2\right\rangCe}

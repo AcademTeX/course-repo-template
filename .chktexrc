@@ -493,22 +493,11 @@ WordDash
 
 Silent
 {
-    \lvert
-    \lVert
-    \langle
-    \rvert
-    \rVert
-    \rangle
-    \mid
-    \mainmatter
-    \frontmatter
-    \printbibliography
-    
-    \appendix
     \@warning 
     \abstractpage
     \addlinespace 
     \and 
+    \appendix
     \appendix 
     \approx
     \begingroup 
@@ -542,6 +531,7 @@ Silent
     \footnotesize 
     \frenchspacing 
     \frontmatter
+    \frontmatter
     \fussy 
     \geq
     \headheight 
@@ -561,23 +551,30 @@ Silent
     \it 
     \item 
     \kill 
+    \langle
     \large 
     \Large 
     \LARGE 
+    \lceil
     \ldots 
     \leavevmode 
     \left 
     \leq
+    \lfloor
     \linebreak
     \listfiles 
     \listoffigures 
     \listoftables 
+    \lvert
+    \lVert
+    \mainmatter
     \makeatletter 
     \makeatother
     \makeindex
     \maketitle 
     \mdseries 
     \medskip 
+    \mid
     \midrule 
     \neg 
     \newline
@@ -597,15 +594,21 @@ Silent
     \pagebreak 
     \par
     \poptabs 
+    \printbibliography
     \printindex
     \pushtabs 
     \qedhere
     \qquad
     \quad
+    \rangle
+    \rceil
     \relax
+    \rfloor
     \right
     \rm 
     \rmfamily 
+    \rvert
+    \rVert
     \sc 
     \scriptsize 
     \scshape 
