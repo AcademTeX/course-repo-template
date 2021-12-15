@@ -1,0 +1,5 @@
+addReviewers: true
+addAssignees: author
+skipKeywords:
+  - wip
+  - WIP
