@@ -31,7 +31,7 @@ This repo has a number of workflows setup to make it easier to use and publish i
 - When a commit is pushed to `gh-pages`, the notes are compiled using a [simple workflow](./.github/workflows/build-latex-notes.yml)
 - The compiled notes are uploaded as an artifact to the action run 
 - When the compiling of notes is finished, the PDF file is also moved to `./gh-pages/{notes-name}.pdf`
-- 
+
 ### Publishing Workflow(s) - Homework 
 - Homeworks are linted via `chktex` whenever a commit is pushed to `main` or `gh-pages`
 - When a commit is pushed to `gh-pages`, the homeworks are compiled using a [simple workflow](./.github/workflows/build-latex-homework.yml)
