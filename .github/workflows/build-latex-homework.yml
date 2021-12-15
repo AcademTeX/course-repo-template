@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout latest version of notes
         uses: actions/checkout@v2
-      - name: Compile notes (including Biber)
+      - name: Compile homeworks (including Biber)
         uses: xu-cheng/latex-action@v2
         with:
           args: -f -pdf -interaction=nonstopmode
@@ -19,6 +19,6 @@ jobs:
       - name: Upload notes to action artifacts
         uses: actions/upload-artifact@master
         with: 
-          name: notes
-          path: notes/*.pdf
+          name: homeworks
+          path: homework/**/*.pdf
           if-no-files-found: error
