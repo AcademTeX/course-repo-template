@@ -1,0 +1,13 @@
+name: Automatically assign issues to their projects
+on:
+  issues:
+    types: [opened]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create or update project card
+        uses: peter-evans/create-or-update-project-card@v1
+        with:
+          project-name: Course Repo Template
+          column-name: Backlog
