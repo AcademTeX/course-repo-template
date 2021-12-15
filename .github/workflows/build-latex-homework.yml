@@ -1,7 +1,7 @@
-name: Build LaTeX for notes
+name: Automatically build LaTeX homeworks
 on:
   push:
-    branches: [ main ]
+    branches: [ gh-pages ]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -16,7 +16,7 @@ jobs:
           glob_root_file: true
           working_directory: notes
           extra_system_packages: "py-pygments"
-          pre_compile: latexmk -pdf -interaction=nonstopmode
+          pre_compile: latexmk -pdf -interaction=nonstopmode *.tex
       - name: Upload notes to action artifacts
         uses: actions/upload-artifact@master
         with: 

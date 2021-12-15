@@ -1,4 +1,4 @@
-name: "Workflow"
+name: Automatically create issues from TODO comments
 on: ["push"]
 jobs:
   build:
