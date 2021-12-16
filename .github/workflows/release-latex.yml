@@ -1,0 +1,89 @@
+name: Release notes + homework + changelog on website
+on:
+  push:
+    tags:
+      - '*.*.*' 
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Changelog
+        id: generate_changelog
+        uses: scottbrenner/generate-changelog-action@master
+      - name: Compile notes (including BibTeX)
+        id: compile_notes
+        uses: xu-cheng/latex-action@v2
+        with:
+          args: -f -pdf -interaction=nonstopmode
+          root_file: "*.tex"
+          glob_root_file: true
+          working_directory: notes
+          extra_system_packages: "py-pygments"
+          post_compile: |
+            cp **/*.pdf ../gh-pages
+            git add -f ../gh-pages/*.pdf
+            git commit -m "chore(gh-pages): Upload latest notes"
+            git push
+      - name: Upload notes to action artifacts
+        id: upload_notes_artifact
+        uses: actions/upload-artifact@master
+        with: 
+          name: notes
+          path: notes/*.pdf
+          if-no-files-found: error
+      - name: Compile homeworks
+        id: compile_homework
+        uses: xu-cheng/latex-action@v2
+        with:
+          args: -f -pdf -interaction=nonstopmode
+          root_file: "homework*/*.tex"
+          glob_root_file: true
+          working_directory: homework
+          extra_system_packages: "py-pygments"
+          # post_compile: |
+          #   cp -r homework*/*.pdf ../gh-pages
+          #   git add -f ../gh-pages/*.pdf
+          #   git commit -m "chore(gh-pages): Upload latest homework files"
+          #   git push
+      - name: Upload homeworks to action artifacts
+        id: upload_homework_artifacts
+        uses: actions/upload-artifact@master
+        with: 
+          name: homeworks
+          path: homework/**/*.pdf
+          if-no-files-found: error
+      - name: Deploy notes to github pages
+        id: deploy_gh_pages
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with: 
+          branch: website
+          folder: gh-pages
+      - name: Create Release
+        id: release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.generate_changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+      # - name: Upload Notes and Homeworks to release
+      #   id: release_artifacts
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.release.outputs.upload_url }} 
+      #     asset_path: ./main.pdf
+      #     asset_name: main.pdf
+      #     asset_content_type: pdf
+
