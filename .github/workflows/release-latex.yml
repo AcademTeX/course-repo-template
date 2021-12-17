@@ -24,9 +24,16 @@ jobs:
             sh compile-notes.sh
             cp *.pdf ../gh-pages
             cd .. 
+      - name: Add latest LaTeX notes to main branch
+        id: git_add_notes
+        shell: bash
+        run: |
+            curr_tag=$(git describe --tags)
+            git checkout main
             git add -f gh-pages/*.pdf
             git commit -m "chore(gh-pages): Updating notes"
             git push 
+            git checkout $curr_tag
       - name: Upload notes to action artifacts
         id: upload_notes_artifact
         uses: actions/upload-artifact@master
