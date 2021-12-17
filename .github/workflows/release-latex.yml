@@ -35,12 +35,32 @@ jobs:
             git commit -m "chore(gh-pages): Updating notes"
             git push 
             git checkout $curr_tag
-      - name: Upload notes to action artifacts
+      - name: Compile PDF of LaTeX homeworks
+        id: compile_notes
+        uses: xu-cheng/texlive-action/full@v1
+        with: 
+          run: |
+            cd homework
+            sh compile-homework.sh
+            cp homework*/*.pdf ../gh-pages
+            cd .. 
+      - name: Add latest LaTeX homeworks to main branch
+        id: git_add_notes
+        shell: bash
+        run: |
+            curr_tag=$(git describe --tags)
+            git config --local user.name "compile-action"
+            git checkout main
+            git add -f gh-pages/*.pdf
+            git commit -m "chore(gh-pages): Updating homeworks"
+            git push 
+            git checkout $curr_tag
+      - name: Upload PDFs to action artifacts
         id: upload_notes_artifact
         uses: actions/upload-artifact@master
         with: 
-          name: notes
-          path: notes/*.pdf
+          name: PDFs
+          path: gh-pages/*.pdf
           if-no-files-found: error
       - name: Deploy notes to github pages
         id: deploy_gh_pages
