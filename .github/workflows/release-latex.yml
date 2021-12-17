@@ -36,7 +36,7 @@ jobs:
             git push 
             git checkout $curr_tag
       - name: Compile PDF of LaTeX homeworks
-        id: compile_notes
+        id: compile_homework
         uses: xu-cheng/texlive-action/full@v1
         with: 
           run: |
@@ -45,7 +45,7 @@ jobs:
             cp homework*/*.pdf ../gh-pages
             cd .. 
       - name: Add latest LaTeX homeworks to main branch
-        id: git_add_notes
+        id: git_add_homework
         shell: bash
         run: |
             curr_tag=$(git describe --tags)
