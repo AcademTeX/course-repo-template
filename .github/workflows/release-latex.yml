@@ -12,21 +12,21 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Changelog
+      - name: Create changelog based on git commit history
         id: generate_changelog
         uses: scottbrenner/generate-changelog-action@master
-      - name: Compile notes and push to current branch (including BibTeX)
+      - name: Compile PDF of LaTeX notes
         id: compile_notes
-        uses: xu-cheng/texlive-action@master
-        with:
+        uses: xu-cheng/texlive-action/full@v1
+        with: 
           run: |
-            cd notes 
+            cd notes
             sh compile-notes.sh
+            cp *.pdf ../gh-pages
             cd .. 
-            cp -r notes/*.pdf gh-pages
             git add -f gh-pages/*.pdf
-            git commit -m "chore(gh-pages): Upload latest notes"
-            git push
+            git commit -m "chore(gh-pages): Updating notes"
+            git push 
       - name: Upload notes to action artifacts
         id: upload_notes_artifact
         uses: actions/upload-artifact@master
@@ -53,14 +53,3 @@ jobs:
             ${{ steps.generate_changelog.outputs.changelog }}
           draft: false
           prerelease: false
-      # - name: Upload Notes and Homeworks to release
-      #   id: release_artifacts
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.release.outputs.upload_url }} 
-      #     asset_path: ./main.pdf
-      #     asset_name: main.pdf
-      #     asset_content_type: pdf
-
