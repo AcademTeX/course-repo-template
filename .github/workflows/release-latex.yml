@@ -17,7 +17,7 @@ jobs:
         uses: scottbrenner/generate-changelog-action@master
       - name: Compile notes and push to current branch (including BibTeX)
         id: compile_notes
-        uses: xu-cheng/texlive-action@v2
+        uses: xu-cheng/texlive-action@main
         with:
           run: |
             cd notes 
