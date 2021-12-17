@@ -29,6 +29,7 @@ jobs:
         shell: bash
         run: |
             curr_tag=$(git describe --tags)
+            git config --local user.name "compile-action"
             git checkout main
             git add -f gh-pages/*.pdf
             git commit -m "chore(gh-pages): Updating notes"
