@@ -15,18 +15,16 @@ jobs:
       - name: Changelog
         id: generate_changelog
         uses: scottbrenner/generate-changelog-action@master
-      - name: Compile notes (including BibTeX)
+      - name: Compile notes and push to current branch (including BibTeX)
         id: compile_notes
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/texlive-action@v2
         with:
-          args: -f -pdf -interaction=nonstopmode
-          root_file: "*.tex"
-          glob_root_file: true
-          working_directory: notes
-          extra_system_packages: "py-pygments"
-          post_compile: |
-            cp **/*.pdf ../gh-pages
-            git add -f ../gh-pages/*.pdf
+          run: |
+            cd notes 
+            sh compile-notes.sh
+            cd .. 
+            cp -r notes/*.pdf gh-pages
+            git add -f gh-pages/*.pdf
             git commit -m "chore(gh-pages): Upload latest notes"
             git push
       - name: Upload notes to action artifacts
@@ -35,27 +33,6 @@ jobs:
         with: 
           name: notes
           path: notes/*.pdf
-          if-no-files-found: error
-      - name: Compile homeworks
-        id: compile_homework
-        uses: xu-cheng/latex-action@v2
-        with:
-          args: -f -pdf -interaction=nonstopmode
-          root_file: "homework*/*.tex"
-          glob_root_file: true
-          working_directory: homework
-          extra_system_packages: "py-pygments"
-          # post_compile: |
-          #   cp -r homework*/*.pdf ../gh-pages
-          #   git add -f ../gh-pages/*.pdf
-          #   git commit -m "chore(gh-pages): Upload latest homework files"
-          #   git push
-      - name: Upload homeworks to action artifacts
-        id: upload_homework_artifacts
-        uses: actions/upload-artifact@master
-        with: 
-          name: homeworks
-          path: homework/**/*.pdf
           if-no-files-found: error
       - name: Deploy notes to github pages
         id: deploy_gh_pages
