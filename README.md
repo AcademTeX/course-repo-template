@@ -22,7 +22,7 @@ To set yourself up for basic usage, do the following:
 This repo has a number of workflows setup to make it easier to use and publish information for your course. In particular,
 
 ### Issues Workflow(s)
-- !!! CURRENTLY BROKEN AND BLOCKED ON [THIS PR](https://github.com/alstr/todo-to-issue-action/pull/96) !!! Isuses are automatically created in comments using [alstr/todo-to-issue-action](https://github.com/alstr/todo-to-issue-action) 
+- Isuses are automatically created in comments using [alstr/todo-to-issue-action](https://github.com/alstr/todo-to-issue-action) 
 - Issues that are created on this repo are automatically assigned to whoever files them 
 - By adding your project information in [the workflow config](.github/workflows/auto-assign-issues-projects.yml), issues created on this repo are also automatically added to a project of your choice 
 <!-- TODO: Fix the issue => project integration for Projects Beta -->
