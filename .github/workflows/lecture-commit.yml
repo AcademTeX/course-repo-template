@@ -1,0 +1,29 @@
+name: Lecture committed to main
+on:
+  push: [ main ] 
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Add latest lecture notes to website main branch
+        id: git_add_notes
+        shell: bash
+        run: |
+            git config --local user.name "compile-action"
+            git checkout main
+            cp -r lectures/*.md gh-pages/_posts
+            git add -f gh-pages/*.md
+            git commit -m "chore(gh-pages): Updating lecture markdown files"
+            git push 
+      - name: Deploy notes to github pages
+        id: deploy_gh_pages
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with: 
+          branch: website
+          folder: gh-pages
