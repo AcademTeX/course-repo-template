@@ -9,5 +9,5 @@ jobs:
       - uses: wow-actions/auto-assign@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CONFIG_FILE: .github/workflows-config/auto-assign-config.yml
+          CONFIG_FILE: .github/configs/auto-assign-config.yml
 
