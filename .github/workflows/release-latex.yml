@@ -15,6 +15,8 @@ jobs:
       - name: Create changelog based on git commit history
         id: generate_changelog
         uses: scottbrenner/generate-changelog-action@master
+        with: 
+          package-dir: .github/configs/package.json
       - name: Compile PDF of LaTeX notes
         id: compile_notes
         uses: xu-cheng/texlive-action/full@v1
