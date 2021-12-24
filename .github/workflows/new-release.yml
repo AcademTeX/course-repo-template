@@ -24,7 +24,7 @@ jobs:
           run: |
             cd notes
             sh compile-notes.sh
-            cp *.pdf ../gh-pages
+            cp *.pdf ../gh-pages/assets/files/tex-notes
             cd .. 
       - name: Add latest LaTeX notes to main branch
         id: git_add_notes
@@ -33,7 +33,7 @@ jobs:
             curr_tag=$(git describe --tags)
             git config --local user.name "github-action"
             git checkout main
-            git add -f gh-pages/*.pdf
+            git add -f gh-pages/assets/files/tex-notes/*.pdf
             git commit -m "chore(gh-pages): Updating notes"
             git push 
             git checkout $curr_tag
@@ -44,7 +44,7 @@ jobs:
           run: |
             cd homework
             sh compile-homework.sh
-            cp homework*/*.pdf ../gh-pages
+            cp homework*/*.pdf ../gh-pages/assets/files/homework
             cd .. 
       - name: Add latest LaTeX homeworks to main branch
         id: git_add_homework
@@ -53,7 +53,7 @@ jobs:
             curr_tag=$(git describe --tags)
             git config --local user.name "github-action"
             git checkout main
-            git add -f gh-pages/*.pdf
+            git add -f gh-pages/assets/files/homework/*.pdf
             git commit -m "chore(gh-pages): Updating homeworks"
             git push 
             git checkout $curr_tag
@@ -61,8 +61,8 @@ jobs:
         id: upload_notes_artifact
         uses: actions/upload-artifact@master
         with: 
-          name: PDFs
-          path: gh-pages/*.pdf
+          name: notes-and-homework
+          path: gh-pages/assets/files
           if-no-files-found: error
       - name: Copy lectures to gh-pages on main branch 
         id: git_copy_lectures
