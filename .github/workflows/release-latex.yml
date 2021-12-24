@@ -64,6 +64,18 @@ jobs:
           name: PDFs
           path: gh-pages/*.pdf
           if-no-files-found: error
+      - name: Copy lectures to gh-pages on main branch 
+        id: git_copy_lectures
+        shell: bash 
+        run: |
+            curr_tag=$(git describe --tags)
+            git config --local user.name "compile-action"
+            git checkout main
+            cp -r lectures/*.md gh-pages/_posts
+            git add gh-pages/_posts/*.md
+            git commit -m "chore(gh-pages): Updating posts"
+            git push 
+            git checkout $curr_tag
       - name: Deploy notes to github pages
         id: deploy_gh_pages
         if: success()
