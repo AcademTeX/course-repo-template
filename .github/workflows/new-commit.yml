@@ -16,7 +16,7 @@ jobs:
         shell: bash 
         run: |
             git config --local user.name "github-action"
-            cp -r lectures/ gh-pages/_posts
+            cp -r lectures/*.md gh-pages/_posts
             if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
               echo "Nothing to commit"
             else
