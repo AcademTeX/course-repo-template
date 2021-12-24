@@ -76,6 +76,19 @@ jobs:
             git commit -m "chore(gh-pages): Updating posts"
             git push 
             git checkout $curr_tag
+      - name: Add changelog to website and repo
+        id: git_add_changelog
+        shell: bash 
+        run: |
+            curr_tag=$(git describe --tags)
+            git config --local user.name "compile-action"
+            git checkout main
+            echo "${{ steps.generate_changelog.outputs.changelog }}" > CHANGELOG.md
+            cp CHANELOG.md gh-pages
+            git add CHANGELOG.md gh-pages/CHANGELOG.md
+            git commit -m "chore(changelog): Updating changelog for release ${{ github.ref }}"
+            git push
+            git checkout $curr_tag
       - name: Deploy notes to github pages
         id: deploy_gh_pages
         if: success()
