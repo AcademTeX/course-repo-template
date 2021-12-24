@@ -6,7 +6,8 @@ If you are looking to write lecture notes live in class, generally speaking LaTe
 
 If you choose to do this, you will probably be using an iPad, Tablet, or Paper notebook. In this case,  whenever you commit a PDF file to the folder `lectures`, that file will be copied and published on your website under `gh-pages/assets/files/raw-notes`. 
 
-You can reference these files on the `gh-pages` site as you would reference any other PDF asset, but  there is no current automation for this, but it is on the roadmap (see https://github.com/qwinters/course-repo-template/issues/21).
+You can reference these files on the `gh-pages` site as you would reference any other PDF asset, but  there is no current automation for this, but it is on the roadmap (see [#issues/21](https://github.com/qwinters/course-repo-template/issues/21)).
+
 ### Markdown: Write in `YYYY-MM-DD-lectureNN.md` files
 
 If you choose to write your notes in markdown and publish them as blog posts on the main page of your gh-pages set, you can write them in `lectures` folder using the format `YYYY-MM-DD-title.md`. When you do this lecture notes will automatically be copied into the `gh-pages/_posts` folder. 
