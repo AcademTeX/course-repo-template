@@ -13,10 +13,13 @@ jobs:
           fetch-depth: 0
       - name: Copy lectures to gh-pages on main branch 
         id: git_copy_lectures
-        shell: bash 
+        shell: bash
         run: |
             git config --local user.name "github-action"
-            cp -r lectures/*.md gh-pages/_posts
+            cd lectures 
+            sh compile-lectures.sh
+            cp *.md ../gh-pages/_posts
+            cd ..
             if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
               echo "Nothing to commit"
             else
