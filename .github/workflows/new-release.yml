@@ -72,19 +72,6 @@ jobs:
           name: notes-and-homework
           path: gh-pages/assets/files
           if-no-files-found: error
-      - name: Copy lectures to gh-pages on main branch 
-        id: git_copy_lectures
-        shell: bash 
-        run: |
-            git config --local user.name "github-action"
-            cp -r lectures/*.md gh-pages/_posts
-            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
-              echo "Nothing to commit"
-            else
-              git add gh-pages/_posts
-              git commit -m "chore(gh-pages): Updating posts"
-              git push
-            fi 
       - name: Add changelog to website and repo
         id: git_add_changelog
         shell: bash 
