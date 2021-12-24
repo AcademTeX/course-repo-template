@@ -1,4 +1,4 @@
-name: Release notes + homework + changelog on website
+name: Update lecture notes on website
 on:
   push:
     branches: [main]
@@ -16,11 +16,12 @@ jobs:
         shell: bash 
         run: |
             git config --local user.name "github-action"
-            git checkout main
-            cp -r lectures/*.md gh-pages/_posts
-            git add gh-pages/_posts/*.md
-            git commit -m "chore(gh-pages): Updating posts"
-            git push
+            cp -r lectures/ gh-pages/_posts
+            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
+              git add gh-pages/_posts
+              git commit -m "chore(gh-pages): Updating posts"
+              git push
+            fi 
       - name: Deploy notes to github pages
         id: deploy_gh_pages
         if: success()
