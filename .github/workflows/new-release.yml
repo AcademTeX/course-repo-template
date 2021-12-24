@@ -33,9 +33,13 @@ jobs:
             curr_tag=$(git describe --tags)
             git config --local user.name "github-action"
             git checkout main
-            git add -f gh-pages/assets/files/tex-notes/*.pdf
-            git commit -m "chore(gh-pages): Updating notes"
-            git push 
+            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
+              echo "Nothing to commit"
+            else
+              git add -f gh-pages/assets/files/tex-notes/*.pdf
+              git commit -m "chore(gh-pages): Updating notes"
+              git push 
+            fi 
             git checkout $curr_tag
       - name: Compile PDF of LaTeX homeworks
         id: compile_homework
@@ -53,9 +57,13 @@ jobs:
             curr_tag=$(git describe --tags)
             git config --local user.name "github-action"
             git checkout main
-            git add -f gh-pages/assets/files/homework/*.pdf
-            git commit -m "chore(gh-pages): Updating homeworks"
-            git push 
+            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
+              echo "Nothing to commit"
+            else
+              git add -f gh-pages/assets/files/homework/*.pdf
+              git commit -m "chore(gh-pages): Updating homeworks"
+              git push 
+            fi 
             git checkout $curr_tag
       - name: Upload PDFs to action artifacts
         id: upload_notes_artifact
@@ -68,14 +76,15 @@ jobs:
         id: git_copy_lectures
         shell: bash 
         run: |
-            curr_tag=$(git describe --tags)
             git config --local user.name "github-action"
-            git checkout main
             cp -r lectures/*.md gh-pages/_posts
-            git add gh-pages/_posts/*.md
-            git commit -m "chore(gh-pages): Updating posts"
-            git push 
-            git checkout $curr_tag
+            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
+              echo "Nothing to commit"
+            else
+              git add gh-pages/_posts
+              git commit -m "chore(gh-pages): Updating posts"
+              git push
+            fi 
       - name: Add changelog to website and repo
         id: git_add_changelog
         shell: bash 
@@ -83,7 +92,7 @@ jobs:
             curr_tag=$(git describe --tags)
             git config --local user.name "github-action"
             git checkout main
-            echo "${{ steps.generate_changelog.outputs.changelog }}" > CHANGELOG.md
+            echo "${{ steps.generate_changelog.outputs.changelog }}" >> CHANGELOG.md
             cp CHANELOG.md gh-pages
             git add CHANGELOG.md gh-pages/CHANGELOG.md
             git commit -m "chore(changelog): Updating changelog for release ${{ github.ref }}"
