@@ -19,6 +19,7 @@ jobs:
             cd lectures 
             sh compile-lectures.sh
             cp *.md ../gh-pages/_posts
+            cp *.pdf ../gh-pages/assets/files/raw-notes
             cd ..
             if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
               echo "Nothing to commit"
