@@ -27,6 +27,8 @@ jobs:
               git add -f gh-pages/_posts
               git add -f gh-pages/assets/files/raw-notes
               git commit -m "chore(gh-pages): Updating posts"
+              git add -f . 
+              git stash
               git push
             fi 
       - name: Deploy notes to github pages
