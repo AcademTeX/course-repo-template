@@ -4,6 +4,7 @@ on:
     types: [opened]
 jobs:
   run:
+    name: Automatically assign issues to their projects
     runs-on: ubuntu-latest
     steps:
       - name: Create or update project card
