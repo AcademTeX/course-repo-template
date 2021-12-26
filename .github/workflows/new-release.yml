@@ -24,25 +24,24 @@ jobs:
           run: |
             cd notes
             sh compile-notes.sh
-            cp *.pdf ../gh-pages/assets/files/tex-notes
             cd .. 
-      - name: Add latest LaTeX notes to main branch
-        id: git_add_notes
-        shell: bash
-        run: |
-            curr_tag=$(git describe --tags)
-            git config --local user.name "github-action"
-            git checkout main
-            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
-              echo "Nothing to commit"
-            else
-              git add -f gh-pages/assets/files/tex-notes/*.pdf
-              git commit -m "chore(gh-pages): Updating notes"
-              git add -f notes/*.pdf
-              git commit -m "chore(notes): Updating notes"
-              git push 
-            fi 
-            git checkout $curr_tag
+      # - name: Add latest LaTeX notes to main branch
+      #   id: git_add_notes
+      #   shell: bash
+      #   run: |
+      #       curr_tag=$(git describe --tags)
+      #       git config --local user.name "github-action"
+      #       git checkout main
+      #       if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
+      #         echo "Nothing to commit"
+      #       else
+      #         git add -f gh-pages/assets/files/tex-notes/*.pdf
+      #         git commit -m "chore(gh-pages): Updating notes"
+      #         git add -f notes/*.pdf
+      #         git commit -m "chore(notes): Updating notes"
+      #         git push 
+      #       fi 
+      #       git checkout $curr_tag
       - name: Compile PDF of LaTeX homeworks
         id: compile_homework
         uses: xu-cheng/texlive-action/full@v1
@@ -50,26 +49,24 @@ jobs:
           run: |
             cd homework
             sh compile-homework.sh --user-password ${{ secrets.HOMEWORK_PASSWORD }} --admin-password ${{ secrets.HOMEWORK_PASSWORD }}
-            cp -r homework/encrypted-homework/*-enc.pdf ../gh-pages/assets/files/homework
-            rm -rf homework/encrypted-homework
-            cd .. 
-      - name: Add latest LaTeX homeworks to main branch
-        id: git_add_homework
-        shell: bash
-        run: |
-            curr_tag=$(git describe --tags)
-            git config --local user.name "github-action"
-            git checkout main
-            if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
-              echo "Nothing to commit"
-            else
-              git add -f gh-pages/assets/files/homework/*.pdf
-              git commit -m "chore(gh-pages): Updating homeworks"
-              git add -f homework/**/*.pdf
-              git commit -m "chore(homework): Updating homeworks"
-              git push 
-            fi 
-            git checkout $curr_tag
+            cd ..
+      # - name: Add latest LaTeX homeworks to main branch
+      #   id: git_add_homework
+      #   shell: bash
+      #   run: |
+      #       curr_tag=$(git describe --tags)
+      #       git config --local user.name "github-action"
+      #       git checkout main
+      #       if [[ $(git status --porcelain | wc -l) -eq "0" ]] ; then 
+      #         echo "Nothing to commit"
+      #       else
+      #         git add -f gh-pages/assets/files/homework/*.pdf
+      #         git commit -m "chore(gh-pages): Updating homeworks"
+      #         git add -f homework/**/*.pdf
+      #         git commit -m "chore(homework): Updating homeworks"
+      #         git push 
+      #       fi 
+      #       git checkout $curr_tag
       - name: Upload PDFs to action artifacts
         id: upload_notes_artifact
         uses: actions/upload-artifact@master
