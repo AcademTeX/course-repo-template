@@ -148,3 +148,8 @@
 ##### Documentation Changes
 
 * **README:**  Add example customization PR (a0166afe)
+#### 2021-12-26
+
+##### Bug Fixes
+
+* **ci:**  remove unused file (482a110d)
