@@ -6,6 +6,7 @@ done
 
 cp -r *.pdf ../gh-pages/assets/files/tex-notes
 
+git config --local user.name "github-action"
 git add -f *.pdf 
 git commit -m "chore(notes): Update raw notes PDF"
 git add -f ../gh-pages/assets/files/tex-notes
