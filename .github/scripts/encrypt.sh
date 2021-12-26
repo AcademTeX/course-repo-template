@@ -3,6 +3,7 @@
 CURR_DIR="$(PWD)"
 REPO_DIR="$(git rev-parse --show-toplevel)"
 
+HOMEWORK_PASSWORD=""
 while [[ $# -gt 0 ]] ; do 
     key="$1"
     case $key in 
@@ -22,7 +23,7 @@ done
 #     echo "No password provided, so skipping encryption for homework"
 #     exit 0
 # fi
-if [[ ! -z "$HOMEWORK_PASSWORD" ]] ; then 
+if [ -z "$HOMEWORK_PASSWORD" ] ; then 
     echo "ERROR: Must provide a homework encryption password"
     exit 1
 fi 
@@ -38,5 +39,6 @@ cd encrypted
 for pdffile in *.pdf ; do 
     encfile="$(basename $pdffile .pdf)-enc.pdf"
     qpdf --encrypt $HOMEWORK_PASSWORD $HOMEWORK_PASSWORD 256 -- $pdffile $encfile
+    rm -rf $pdffile
 done 
 cd $CURR_DIR

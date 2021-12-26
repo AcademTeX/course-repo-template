@@ -16,3 +16,6 @@ cp -r notes/*.pdf gh-pages/assets/files/tex-notes
 
 git add -f gh-pages/assets/files/**/*.pdf
 git commit -m "chore(gh-pages): Updating published PDFs"
+
+git push
+cd $CURR_DIR
