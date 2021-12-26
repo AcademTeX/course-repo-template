@@ -1,5 +1,30 @@
 #!/bin/bash
 
+if [[ $# == 0 ]] ; then 
+    echo "ERROR: Please provide arugments for encrypting your homework"
+    exit 1;
+fi 
+
+while [[ $# -gt 0 ]] ; do 
+    key="$1"
+    case $key in 
+        -up|--user-password)
+            USER_PASSWORD="$2"
+            shift
+            shift 
+            ;;
+        -ap|--admin-password)
+            ADMIN_PASSWORD="$2"
+            shift
+            shift
+            ;;
+        *)
+            echo "UNKNOWN ARUGMENT: $key"
+            exit 1
+            ;;
+    esac
+done 
+
 for assignment in homework* ; do 
     cd $assignment
     for file in *.tex ; do 
@@ -7,3 +32,14 @@ for assignment in homework* ; do
     done 
     cd .. 
 done
+
+mkdir -p encrypted-homework
+cp -r homework*/*.pdf encrypted-homework
+
+cd encrypted-homework
+for pdffile in *.pdf ; do 
+    encfile="$(basename $pdffile .pdf)-enc.pdf"
+    qpdf --encrypt $USER_PASSWORD $ADMIN_PASSWORD 256 -- $pdffile $encfile
+done
+cd .. 
+
