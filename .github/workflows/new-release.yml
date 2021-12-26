@@ -16,7 +16,7 @@ jobs:
         id: generate_changelog
         uses: scottbrenner/generate-changelog-action@master
         with: 
-          package-dir: .github/configs/package.json
+          exclude: chore
       - name: Compile PDF of LaTeX notes
         id: compile_notes
         uses: xu-cheng/texlive-action/full@v1
