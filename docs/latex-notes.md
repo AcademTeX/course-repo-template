@@ -4,9 +4,9 @@ If you are using this repo, there's a good chance that you already know how to w
 
 #### Premable and Macro files
 
-There are two main common LaTeX files that are shared across homework, notes, and the website blog posts. The `common/preamble.tex` file defines theorem environments, imports important packages, setups the references and bibliographies, and overall governs the LaTeX-specific parts of writing documents. 
+There are two main common LaTeX files that are shared across homework, notes, and the website blog posts. The `preamble/packages.tex` file defines theorem environments, imports important packages, setups the references and bibliographies, and overall governs the LaTeX-specific parts of writing documents. 
 
-The `common/macros.tex` file on the other hand defines macros that are shared across the system. These macros are of course highly opinionated and do not fit everyone's style. It is recommended that if your style does not match the defaults of the repo, that you fork the repo and change the template to your own liking before deploying. Note that these macros are also automatically imported into every `lecture/*.md` file (that have the [marker seen here](https://github.com/qwinters/course-repo-template/blob/1ce0f2894887e1e229be0cc103cf0a6f53b551b6/lectures/YYYY-MM-DD-lecture01.md?plain=1#L8)) before publishing, so you should feel free to use the macros while writing lecture note blog posts. 
+The `preamble/macros.tex` file on the other hand defines macros that are shared across the system. These macros are of course highly opinionated and do not fit everyone's style. It is recommended that if your style does not match the defaults of the repo, that you fork the repo and change the template to your own liking before deploying. Note that these macros are also automatically imported into every `lecture/*.md` file (that have the [marker seen here](https://github.com/qwinters/course-repo-template/blob/1ce0f2894887e1e229be0cc103cf0a6f53b551b6/lectures/YYYY-MM-DD-lecture01.md?plain=1#L8)) before publishing, so you should feel free to use the macros while writing lecture note blog posts. 
 
 #### Subfiles Organization
 
@@ -35,8 +35,6 @@ notes:
                                 # you plan to use across your notes (compiled 
                                 # with biber)
 
-    compile-notes.sh            # Compilation script
-
     notes.tex                   # Notes file where you source individual chapters
 ```
 
@@ -64,4 +62,4 @@ git push --tags
 ```
 The command will run only on semantic tags, so make sure your tag complies to the semantic naming scheme. After you push up the tag, the GitHub workflows configured in `./github/workflows` will compile the notes and upload them as an artifact to your release. They will also be made available to anyone who has access to the repo in `notes/notes.pdf` and on the website published via the folder `gh-pages/assets/files/tex-notes/notes.pdf`. 
 
-If you want to change how the notes are compiled, then modify the `notes/compile-notes.sh` script and if you want to change the way that the notes are published, modify the (some-what complicated)`./github/workflows/new-release.yml` workflow configuration. 
+If you want to change how the notes are compiled, then modify the `.github/scripts/compile.sh` script and if you want to change the way that the notes are published, modify the (some-what complicated)`./github/workflows/new-release.yml` workflow configuration. 
