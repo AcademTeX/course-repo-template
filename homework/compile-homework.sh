@@ -41,5 +41,14 @@ for pdffile in *.pdf ; do
     encfile="$(basename $pdffile .pdf)-enc.pdf"
     qpdf --encrypt $USER_PASSWORD $ADMIN_PASSWORD 256 -- $pdffile $encfile
 done
-cd .. 
+cd ..
 
+cp -r encrypted-homework/*-enc.pdf ../gh-pages/assets/files/homework
+rm -rf encrypted-homework
+
+git add -f homework*/*.pdf
+git commit -m "chore(homework): Update raw homework PDFs"
+git add -f ../gh-pages/assets/files/homework/*-enc.pdf
+git commit -m "chore(gh-pages): Update encrypted homework PDFs"
+
+git push 
