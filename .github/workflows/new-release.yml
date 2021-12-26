@@ -38,6 +38,8 @@ jobs:
             else
               git add -f gh-pages/assets/files/tex-notes/*.pdf
               git commit -m "chore(gh-pages): Updating notes"
+              git add -f notes/*.pdf
+              git commit -m "chore(notes): Updating notes"
               git push 
             fi 
             git checkout $curr_tag
@@ -62,6 +64,8 @@ jobs:
             else
               git add -f gh-pages/assets/files/homework/*.pdf
               git commit -m "chore(gh-pages): Updating homeworks"
+              git add -f homework/**/*.pdf
+              git commit -m "chore(homework): Updating homeworks"
               git push 
             fi 
             git checkout $curr_tag
