@@ -6,6 +6,7 @@ REPO_DIR="$(git rev-parse --show-toplevel)"
 cd $REPO_DIR
 if [[ -d encrypted ]] ; then 
     cp -r encrypted/*.pdf gh-pages/assets/files/homework
+    rm -rf encrypted
 # Uncomment the below if you want to publish unencrypted homeworks
 # else 
 #     cp -r homework*/*.pdf gh-pages/assets/files/homework
