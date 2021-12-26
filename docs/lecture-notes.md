@@ -12,14 +12,6 @@ You can reference these files on the `gh-pages` site as you would reference any 
 
 If you choose to write your notes in markdown and publish them as blog posts on the main page of your gh-pages set, you can write them in `lectures` folder using the format `YYYY-MM-DD-title.md`. When you do this lecture notes will automatically be copied into the `gh-pages/_posts` folder. 
 
-Additionally, the script `lectures/compile-lectures.sh` will insert the macros in `common/preamble.tex` into your file if you include the following in your markdown file: 
-```
-$$
-# include macros
-$$
-```
-It is up to you if you want to do include it. 
-
 ### LaTeX (not recommended): Write directly in `notes.tex`
 
 If you are strong enough in LaTeX during lecture, you can simply use the regular `notes` folder. Alternatively, you can write LaTeX notes in the `lectures` folder and **PDF** files will be automatically updated on the website. Note that unlike the notes section, LaTeX files are not compiled from this folder and not posted on the website. 
