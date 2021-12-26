@@ -13,7 +13,8 @@ The main workflows for the repos, in brief, are best described as follows:
 For a more thorough overview of all the workflows for the repo, see the [docs](./docs) folder. 
 ## Customization and usage
 
-Generally, if you are looking at using this repo, I would recommend forking the repository and setting it up with your personal settings first. There's a [checklist of things to consider](./docs/customise-and-use-this-template.md) for customization. 
+Generally, if you are looking at using this repo, I would recommend forking the repository and setting it up with your personal settings first. There's a [checklist of things to consider](./docs/customise-and-use-this-template.md) for customization.
+If you want an example, take a look at the [changes I've made for my own repo](https://github.com/qwinters/qwinters-tum-template/pull/1/files)
 ## Contributions
 
 Contributions are always welcome, but due to the fact that this is merely a side project for me, maintenance will likely be few and far between after getting the templates up and running. If you want something specific and cannot / do not know how to build the feature yourself, use the button below to file an issue: 
