@@ -4,7 +4,7 @@ on:
     branches: [main]
 jobs:
   build:
-    name: Create Release
+    name: Update lecture notes on website
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

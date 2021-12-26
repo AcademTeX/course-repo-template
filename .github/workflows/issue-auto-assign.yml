@@ -4,6 +4,7 @@ on:
     types: [opened]
 jobs:
   run:
+    name: Automatically assign issues to their creators
     runs-on: ubuntu-latest
     steps:
       - uses: wow-actions/auto-assign@v1

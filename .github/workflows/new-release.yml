@@ -5,7 +5,7 @@ on:
       - '*.*.*' 
 jobs:
   build:
-    name: Create Release
+    name: Release notes + homework + changelog on website
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

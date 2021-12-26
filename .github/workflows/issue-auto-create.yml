@@ -2,6 +2,7 @@ name: Automatically create issues from TODO comments
 on: ["push"]
 jobs:
   build:
+    name: Automatically create issues from TODO comments
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@master"
