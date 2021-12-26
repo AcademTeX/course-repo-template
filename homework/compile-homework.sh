@@ -46,6 +46,7 @@ cd ..
 cp -r encrypted-homework/*-enc.pdf ../gh-pages/assets/files/homework
 rm -rf encrypted-homework
 
+git config --local user.name "github-action"
 git add -f homework*/*.pdf
 git commit -m "chore(homework): Update raw homework PDFs"
 git add -f ../gh-pages/assets/files/homework/*-enc.pdf
