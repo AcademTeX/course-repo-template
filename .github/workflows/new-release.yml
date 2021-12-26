@@ -50,7 +50,7 @@ jobs:
           run: |
             cd homework
             sh compile-homework.sh --user-password ${{ secrets.HOMEWORK_PASSWORD }} --admin-password ${{ secrets.HOMEWORK_PASSWORD }}
-            cp homework/encrypted-homework/*-enc.pdf ../gh-pages/assets/files/homework
+            cp -r homework/encrypted-homework/*-enc.pdf ../gh-pages/assets/files/homework
             rm -rf homework/encrypted-homework
             cd .. 
       - name: Add latest LaTeX homeworks to main branch
