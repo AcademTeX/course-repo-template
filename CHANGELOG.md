@@ -126,3 +126,20 @@
 ##### New Features
 
 * **ci:**  Switching to environment var for password (e68e8813)
+#### 2021-12-26
+
+##### Documentation Changes
+
+* **README:**  Revamp readme (25da2d1d)
+* **how-to:**
+  *  update index (50cbe0d6)
+  *  Adding homework file structure (24a29300)
+  *  Fork and customize how-to (62fbabbb)
+  *  Minor updates to paths and refs (c92197a5)
+
+##### Code Style Changes
+
+* **preamble:**
+  *  Simpler packages setup (ff8bc734)
+  *  Simplify macros (fe4353f5)
+* **ci:**  Remove commented out code (e5503ade)
