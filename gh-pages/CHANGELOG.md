@@ -121,3 +121,8 @@
 ##### Bug Fixes
 
 * **ci:**  typo for CHANGELOG.md file (d7784e2c)
+#### 2021-12-26
+
+##### New Features
+
+* **ci:**  Switching to environment var for password (e68e8813)
