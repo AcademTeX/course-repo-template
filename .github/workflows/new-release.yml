@@ -80,7 +80,7 @@ jobs:
             git config --local user.name "github-action"
             git checkout main
             echo "${{ steps.generate_changelog.outputs.changelog }}" >> CHANGELOG.md
-            cp CHANELOG.md gh-pages
+            cp CHANGELOG.md gh-pages
             git add CHANGELOG.md gh-pages/CHANGELOG.md
             git commit -m "chore(changelog): Updating changelog for release ${{ github.ref }}"
             git push
