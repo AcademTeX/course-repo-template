@@ -1,4 +1,4 @@
-## How-to: Write LaTeX notes
+## How-to: Write LaTeX Notes and Homework
 
 If you are using this repo, there's a good chance that you already know how to write LaTeX notes effectively. That being said there are still somethings worth going over to make sure that your style of writing LaTeX notes matches the format of this repo
 
@@ -63,3 +63,17 @@ git push --tags
 The command will run only on semantic tags, so make sure your tag complies to the semantic naming scheme. After you push up the tag, the GitHub workflows configured in `./github/workflows` will compile the notes and upload them as an artifact to your release. They will also be made available to anyone who has access to the repo in `notes/notes.pdf` and on the website published via the folder `gh-pages/assets/files/tex-notes/notes.pdf`. 
 
 If you want to change how the notes are compiled, then modify the `.github/scripts/compile.sh` script and if you want to change the way that the notes are published, modify the (some-what complicated)`./github/workflows/new-release.yml` workflow configuration. 
+
+#### Homework 
+First, if you have not read about how to setup a website and keep your homework private, make sure to read the other articles in this documentation folder first. This how-to does not include information on how to keep your homework safe and secure. Only how the homework files are structured.
+
+Just like the lecture notes, the homework files are structured problem by problem using the `subfile` package. The general directory structure is as follows:
+```yaml
+homework01:
+    problems: 
+        - problem01.tex
+    hwk01.tex
+```
+
+If you separate each homework problem to its own file, it gives you the ability to compile these files separately which might be helpful depending on how you have to submit homework. 
+
