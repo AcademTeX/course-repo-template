@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - '*.*.*' 
+env:
+  HOMEWORK_PASSWORD: ${{ secrets.HOMEWORK_PASSWORD }}
 jobs:
   build:
     name: Release notes + homework + changelog on website
@@ -29,7 +31,7 @@ jobs:
       - name: Encrypt homework for publishing
         id: encrypt_homework
         shell: bash 
-        run: sh .github/scripts/encrypt.sh --password ${{ secrets.HOMEWORK_PASSWORD }}
+        run: sh .github/scripts/encrypt.sh
       - name: Publish updated GitHub pages files
         id: publish_gh_pages
         shell: bash 
