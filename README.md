@@ -8,9 +8,10 @@ The main workflows for the repos, in brief, are best described as follows:
 * **Taking notes in lecture**: Take notes in lecture and then commit the markdown or PDF to the folder `lectures`. If you have the website setup, these files will automatically be published in `gh-pages/_posts` (for markdown files), and `gh-pages/assets/files/raw-notes` (for PDF files). 
 * **Writing up homework**: Write up homework in the `homeworkNN` folders. If you need to make a new assignment, just copy one of the old ones and change the content for your new assignment. Homeworks are only compiled and published when you tag a version. Note: you can rename the `homeworkNN/hwk01.tex` file to be whatever you like
 * **Writing up formal notes**: Write up formal notes (e.g. a lecture script or something for broader distribution) in a `notes/notes.tex` file. Notes are only compiled and published when you tag a version. Note: you can rename the `notes/notes.tex` files to be whatever you like
-* **Publish your notes and homework online**: If you have the 
+* **Publish your notes and homework online**: If you have the website feature setup you can publish them online (and homeworks will be password protected). Updates will automatically happen every time you tag a new release (using semantic versioning). 
 
-For a more thorough overview of all the workflows for the repo, see the [docs](./docs) folder. 
+For a more thorough overview of all the workflows for the repo, see the [docs](./docs) folder. For examples, [checkout the website](https://qwinters.github.io/course-repo-template), the [notes](./notes/notes.pdf), and the [sample homework (unencrypted)](./homework01/hwk01.pdf).
+
 ## Customization and usage
 
 Generally, if you are looking at using this repo, I would recommend forking the repository and setting it up with your personal settings first. There's a [checklist of things to consider](./docs/customise-and-use-this-template.md) for customization.
