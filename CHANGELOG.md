@@ -143,3 +143,13 @@
   *  Simpler packages setup (ff8bc734)
   *  Simplify macros (fe4353f5)
 * **ci:**  Remove commented out code (e5503ade)
+#### 2021-12-26
+
+##### Documentation Changes
+
+* **README:**  Add example customization PR (a0166afe)
+#### 2021-12-26
+
+##### Bug Fixes
+
+* **ci:**  remove unused file (482a110d)
